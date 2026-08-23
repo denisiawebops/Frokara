@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /Frokara/
-Sitemap: https://denisiawebops.github.io/Frokara/sitemap.xml
