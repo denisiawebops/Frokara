@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff8f1">
+<meta name="color-scheme" content="light">
+<meta name="author" content="FROCKARA Studio">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<link rel="canonical" href="https://denisiawebops.github.io/Frokara/">
+<meta name="description" content="FROCKARA — floral Indian frocks by sleeve, theme and occasion. Dedicated product pages, personalized sessions, Google-ready account flow and WhatsApp ordering.">
+<meta property="og:type" content="website"><meta property="og:title" content="FROCKARA — Indian Frocks in Full Bloom"><meta property="og:description" content="Discover Indian frocks by sleeve, theme, fabric and occasion. Save your edit and order directly through WhatsApp."><meta property="og:image" content="https://www.thetaram.com/cdn/shop/files/DSC_4637.jpg"><meta property="og:url" content="https://denisiawebops.github.io/Frokara/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.json">
+<title>FROCKARA — Indian Frocks in Full Bloom</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{rose:'#a53d5b',petal:'#f4dfe4',cream:'#fff8f1',leaf:'#456650',ink:'#34252a',gold:'#c79a4a'}}}};</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+:root{--rose:#a53d5b;--rose2:#d77d92;--cream:#fff8f1;--ink:#34252a;--line:#eadfd9;--leaf:#456650;--gold:#c79a4a}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fffdfb;color:var(--ink)}
+.serif{font-family:Georgia,"Times New Roman",serif} .floral-bg{background-color:var(--cream);background-image:radial-gradient(circle at 15% 20%,rgba(215,125,146,.12) 0 18%,transparent 19%),radial-gradient(circle at 85% 12%,rgba(199,154,74,.13) 0 14%,transparent 15%),radial-gradient(circle at 75% 85%,rgba(69,102,80,.08) 0 16%,transparent 17%)}
+.flower{position:absolute;width:90px;height:90px;border-radius:50%;border:1px solid rgba(165,61,91,.15);box-shadow:18px 0 0 -12px rgba(215,125,146,.18),-18px 0 0 -12px rgba(215,125,146,.18),0 18px 0 -12px rgba(215,125,146,.18),0 -18px 0 -12px rgba(215,125,146,.18);opacity:.85}
+.glass{background:rgba(255,255,255,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.card{border:1px solid var(--line);transition:.25s ease;background:#fff} .card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(84,40,52,.12)}
+.btn{transition:.2s ease} .btn:hover{transform:translateY(-2px)} .hide-scrollbar{scrollbar-width:none} .hide-scrollbar::-webkit-scrollbar{display:none}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:999;padding:12px 16px;background:var(--ink);color:#fff;border-radius:999px;box-shadow:0 18px 40px rgba(0,0,0,.2)}
+@keyframes floatin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}} .animate-in{animation:floatin .45s ease both}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+<script type="application/ld+json" id="schema-data"></script>
+</head>
+<body>
+<div id="app" aria-live="polite"></div>
+<div id="toast" class="hidden toast" role="status" aria-live="polite"></div>
+<script src="./app.js" defer></script>
+</body>
+</html>
