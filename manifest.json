@@ -1,0 +1,9 @@
+{
+  "name": "FROCKARA",
+  "short_name": "FROCKARA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff8f1",
+  "theme_color": "#a53d5b",
+  "description": "Floral Indian frock commerce experience"
+}
