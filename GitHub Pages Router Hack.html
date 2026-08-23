@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FROCKARA - Redirecting</title>
+    <!-- 
+      This script solves GitHub Pages not supporting SPA routing directly.
+      If someone hits https://denisiawebops.github.io/Frokara/shop
+      It captures it and redirects to https://denisiawebops.github.io/Frokara/#/shop
+    -->
+    <script>
+        const path = window.location.pathname.replace(/^\/Frokara\/?/, '').replace(/^\/|\/$/g, '');
+        const target = path ? '#/' + path : window.location.hash || '';
+        window.location.replace('/Frokara/' + target);
+    </script>
+</head>
+<body style="background-color: #FDFBF7; color: #8B3A4C; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <p>Loading your garden...</p>
+    <noscript>Please enable JavaScript to view FROCKARA.</noscript>
+</body>
+</html>

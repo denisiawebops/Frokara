@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FROCKARA — Indian Frocks in Full Bloom</title>
+    
+    <!-- SEO & Meta -->
+    <meta name="description" content="Discover premium Indian frocks by sleeve, theme, fabric and occasion. A luxury botanical fashion journal and modern Indian ecommerce store.">
+    <meta name="theme-color" content="#FDFBF7">
+    <link rel="canonical" href="https://denisiawebops.github.io/Frokara/">
+    <meta property="og:title" content="FROCKARA — Indian Frocks in Full Bloom">
+    <meta property="og:description" content="Every frock has a garden story. Shop premium Indian frocks.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://denisiawebops.github.io/Frokara/">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "FROCKARA",
+      "url": "https://denisiawebops.github.io/Frokara/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://denisiawebops.github.io/Frokara/#/shop?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ivory': '#FDFBF7',
+                        'rose': '#8B3A4C',
+                        'dusty': '#C58F98',
+                        'olive': '#4A5D23',
+                        'marigold': '#D4A373',
+                        'ink': '#2C2A29'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Premium CSS */
+        body { background-color: #FDFBF7; color: #2C2A29; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .floral-bg {
+            background-image: radial-gradient(circle at 100% 0%, rgba(139, 58, 76, 0.04) 0%, transparent 40%),
+                              radial-gradient(circle at 0% 100%, rgba(74, 93, 35, 0.04) 0%, transparent 40%);
+        }
+        
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -10px rgba(139, 58, 76, 0.15); }
+        
+        /* Smooth page transitions */
+        #app { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Modals & Drawers */
+        .drawer-open { transform: translateX(0); }
+        .drawer-closed { transform: translateX(100%); }
+        .modal-overlay { background: rgba(253, 251, 247, 0.9); backdrop-filter: blur(4px); }
+        
+        /* Button Styles */
+        .btn-primary {
+            background-color: #8B3A4C; color: white; transition: all 0.3s ease;
+        }
+        .btn-primary:hover { background-color: #712f3e; box-shadow: 0 4px 12px rgba(139, 58, 76, 0.2); }
+        .btn-outline {
+            border: 1px solid #8B3A4C; color: #8B3A4C; transition: all 0.3s ease;
+        }
+        .btn-outline:hover { background-color: #8B3A4C; color: white; }
+    </style>
+</head>
+<body class="font-sans floral-bg antialiased relative pb-16 md:pb-0">
+
+    <!-- Desktop & Mobile Top Navigation -->
+    <header class="fixed top-0 w-full bg-ivory/95 backdrop-blur border-b border-rose/10 z-40 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 -ml-2 text-ink hover:text-rose"><i data-lucide="menu"></i></button>
+                <a href="#/" class="font-serif text-2xl font-bold text-rose tracking-wider">FROCKARA</a>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest text-ink/80">
+                <a href="#/shop" class="hover:text-rose transition-colors">Shop</a>
+                <a href="#/themes" class="hover:text-rose transition-colors">Themes</a>
+                <a href="#/sleeve-studio" class="hover:text-rose transition-colors">Sleeves</a>
+                <a href="#/concierge" class="hover:text-rose transition-colors">Concierge</a>
+                <a href="#/journal" class="hover:text-rose transition-colors">Journal</a>
+            </nav>
+
+            <div class="flex items-center gap-3 md:gap-5 text-ink/80">
+                <button onclick="openSearch()" class="hover:text-rose p-1"><i data-lucide="search" class="w-5 h-5"></i></button>
+                <a href="#/wishlist" class="hover:text-rose p-1 relative">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                    <span id="wishlist-badge" class="absolute -top-1 -right-1 bg-rose text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <button onclick="checkAccount()" class="hover:text-rose p-1 hidden md:block"><i data-lucide="user" class="w-5 h-5"></i></button>
+                <button onclick="toggleCart()" class="hover:text-rose p-1 relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-rose text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-ivory z-50 transform -translate-x-full transition-transform duration-300 hidden md:hidden">
+        <div class="p-4 flex justify-between items-center border-b border-rose/10">
+            <span class="font-serif text-2xl text-rose font-bold">FROCKARA</span>
+            <button onclick="toggleMobileMenu()" class="p-2 text-ink"><i data-lucide="x"></i></button>
+        </div>
+        <div class="p-6 flex flex-col gap-6 text-xl font-serif text-ink">
+            <a href="#/shop" onclick="toggleMobileMenu()">Shop All Frocks</a>
+            <a href="#/themes" onclick="toggleMobileMenu()">Themes & Moods</a>
+            <a href="#/sleeve-studio" onclick="toggleMobileMenu()">Sleeve Studio</a>
+            <a href="#/concierge" onclick="toggleMobileMenu()">Style Concierge</a>
+            <a href="#/journal" onclick="toggleMobileMenu()">The Journal</a>
+            <div class="h-px bg-rose/10 w-full my-2"></div>
+            <a href="javascript:void(0)" onclick="toggleMobileMenu(); checkAccount()" class="text-base font-sans text-rose">My Account</a>
+        </div>
+    </div>
+
+    <!-- Main SPA Container -->
+    <main id="app" class="pt-16 min-h-[85vh]"></main>
+
+    <!-- Mobile Bottom Navigation (Sticky) -->
+    <nav class="md:hidden fixed bottom-0 w-full bg-ivory border-t border-rose/10 z-40 pb-safe">
+        <div class="flex justify-around items-center h-16 text-xs text-ink/70">
+            <a href="#/" class="flex flex-col items-center gap-1 hover:text-rose"><i data-lucide="home" class="w-5 h-5"></i>Home</a>
+            <a href="#/shop" class="flex flex-col items-center gap-1 hover:text-rose"><i data-lucide="grid" class="w-5 h-5"></i>Shop</a>
+            <a href="#/sleeve-studio" class="flex flex-col items-center gap-1 hover:text-rose"><i data-lucide="scissors" class="w-5 h-5"></i>Sleeves</a>
+            <a href="#/wishlist" class="flex flex-col items-center gap-1 hover:text-rose relative"><i data-lucide="heart" class="w-5 h-5"></i>Saved</a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="bg-ink text-ivory/80 pt-16 pb-24 md:pb-16 mt-20">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div>
+                <h3 class="font-serif text-2xl text-ivory tracking-wider mb-4">FROCKARA</h3>
+                <p class="text-sm leading-relaxed mb-6">Every frock has a garden story. Discover premium Indian frocks by sleeve, theme and occasion.</p>
+                <div class="flex gap-4">
+                    <i data-lucide="instagram" class="w-5 h-5 cursor-pointer hover:text-white"></i>
+                    <i data-lucide="facebook" class="w-5 h-5 cursor-pointer hover:text-white"></i>
+                    <i data-lucide="twitter" class="w-5 h-5 cursor-pointer hover:text-white"></i>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-serif text-lg text-ivory mb-4">Explore</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#/shop" class="hover:text-white">Shop All</a></li>
+                    <li><a href="#/themes" class="hover:text-white">Themes</a></li>
+                    <li><a href="#/sleeve-studio" class="hover:text-white">Sleeve Studio</a></li>
+                    <li><a href="#/journal" class="hover:text-white">Journal</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-serif text-lg text-ivory mb-4">Support</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="javascript:alert('Size guide coming soon.')" class="hover:text-white">Size Guide</a></li>
+                    <li><a href="javascript:alert('Shipping policy coming soon.')" class="hover:text-white">Shipping & Returns</a></li>
+                    <li><a href="javascript:void(0)" onclick="window.open('https://wa.me/918317581308')" class="hover:text-white">WhatsApp Support</a></li>
+                    <li><a href="javascript:alert('Privacy policy coming soon.')" class="hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-serif text-lg text-ivory mb-4">Newsletter</h4>
+                <p class="text-sm mb-4">Keep your garden saved. Join our botanical journal.</p>
+                <div class="flex border-b border-ivory/30 pb-2">
+                    <input type="email" placeholder="Email address" class="bg-transparent w-full outline-none text-sm text-ivory placeholder-ivory/50">
+                    <button class="text-sm uppercase tracking-widest hover:text-white">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-ivory/10 text-xs text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; <span id="year"></span> FROCKARA. All rights reserved.</p>
+            <p class="mt-2 md:mt-0">Premium Indian Ecommerce Architecture</p>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer-overlay" class="fixed inset-0 bg-ink/40 z-50 hidden transition-opacity opacity-0" onclick="toggleCart()"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-ivory z-50 drawer-closed transition-transform duration-300 shadow-2xl flex flex-col">
+        <div class="p-6 border-b border-rose/10 flex justify-between items-center bg-white">
+            <h2 class="font-serif text-xl text-ink">Your Garden Bag</h2>
+            <button onclick="toggleCart()" class="text-ink/60 hover:text-ink"><i data-lucide="x"></i></button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Cart items injected here -->
+        </div>
+        <div class="p-6 bg-white border-t border-rose/10">
+            <div class="flex justify-between text-ink mb-4 font-serif text-lg">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">₹0</span>
+            </div>
+            <p class="text-xs text-ink/60 mb-6 text-center">Shipping & taxes calculated via WhatsApp.</p>
+            <button onclick="processCheckout()" class="w-full btn-primary py-4 rounded-full uppercase tracking-widest text-sm font-bold flex items-center justify-center gap-2">
+                Order via WhatsApp <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 modal-overlay z-50 hidden opacity-0 transition-opacity flex flex-col">
+        <div class="p-4 flex justify-end">
+            <button onclick="closeSearch()" class="p-2 text-ink hover:text-rose bg-white rounded-full shadow"><i data-lucide="x"></i></button>
+        </div>
+        <div class="flex-1 px-6 pt-10 md:pt-20 max-w-3xl mx-auto w-full">
+            <h2 class="font-serif text-3xl text-ink mb-6 text-center">Search the Garden</h2>
+            <div class="relative">
+                <i data-lucide="search" class="absolute left-4 top-4 text-ink/40 w-6 h-6"></i>
+                <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Search by theme, sleeve, or color..." class="w-full bg-white border-2 border-rose/20 rounded-full py-4 pl-14 pr-6 text-lg outline-none focus:border-rose transition-colors shadow-sm">
+            </div>
+            <div id="search-results" class="mt-8 space-y-4 max-h-[50vh] overflow-y-auto hide-scrollbar">
+                <!-- Search results injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Account / Login Prompt -->
+    <div id="account-modal" class="fixed inset-0 modal-overlay z-50 hidden opacity-0 transition-opacity flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 text-rose/5"><i data-lucide="flower-2" class="w-40 h-40"></i></div>
+            <button onclick="closeAccount()" class="absolute top-4 right-4 text-ink/40 hover:text-ink"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <h3 class="font-serif text-2xl text-ink mb-2">Keep your garden saved.</h3>
+            <p class="text-ink/60 mb-8 text-sm">Create an account to save your favorite frocks, themes, and measurements.</p>
+            <button onclick="mockLogin()" class="w-full border border-ink/20 rounded-full py-3 flex items-center justify-center gap-3 hover:bg-stone-50 transition-colors mb-4">
+                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/><path fill="none" d="M1 1h22v22H1z"/></svg>
+                <span class="text-sm font-bold text-ink">Continue with Google</span>
+            </button>
+            <p class="text-xs text-center text-ink/40 mt-4">For production, this connects to Google Identity Services.</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-20 md:bottom-8 left-1/2 transform -translate-x-1/2 bg-ink text-white px-6 py-3 rounded-full text-sm font-medium shadow-xl z-50 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 flex items-center gap-2">
+        <i data-lucide="check-circle" class="w-4 h-4"></i> <span id="toast-msg">Added to bag</span>
+    </div>
+
+    <!-- Application Logic (Strictly encapsulated, no unescaped output) -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 1. DATASET
+        const PRODUCTS = [
+            { id: "gulmohar-bloom", slug: "gulmohar-bloom", name: "Gulmohar Bloom", price: 4290, compareAtPrice: 4990, theme: "Floral", sleeve: "Puff", fabric: "Mul Chanderi", fit: "Tiered", colour: "Rose / Marigold", occasion: "Brunch", image: "https://images.unsplash.com/photo-1612336307429-8a898d10e223?auto=format&fit=crop&q=80&w=800", desc: "A garden-led frock with statement puff sleeves, tiered volume and an easy Indian print story." },
+            { id: "pastel-petal", slug: "pastel-petal", name: "Pastel Petal", price: 4790, compareAtPrice: 5290, theme: "Romantic", sleeve: "Ruffle", fabric: "Chiffon", fit: "A-Line", colour: "Lilac", occasion: "Resort", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=800", desc: "Pastel blooms, ruffle sleeves and soft movement for a romantic everyday occasion dress." },
+            { id: "rose-garden", slug: "rose-garden", name: "Rose Garden", price: 3890, compareAtPrice: null, theme: "Floral", sleeve: "Bell", fabric: "Cotton Silk", fit: "Fit & Flare", colour: "Rose", occasion: "Day event", image: "https://images.unsplash.com/photo-1515347619362-e64e9a0ce692?auto=format&fit=crop&q=80&w=800", desc: "Classic rose motifs on soft cotton silk, defined by dramatic bell sleeves." },
+            { id: "marigold-sun", slug: "marigold-sun", name: "Marigold Sun", price: 5490, compareAtPrice: 5990, theme: "Festive", sleeve: "3/4", fabric: "Banarasi", fit: "Straight", colour: "Yellow", occasion: "Haldi / Festive", image: "https://images.unsplash.com/photo-1550614000-4b95dd2475a7?auto=format&fit=crop&q=80&w=800", desc: "Vibrant marigold hues woven into a festive essential with traditional 3/4 sleeves." },
+            { id: "jasmine-check", slug: "jasmine-check", name: "Jasmine Check", price: 2990, compareAtPrice: null, theme: "Everyday", sleeve: "Cap", fabric: "Handloom Cotton", fit: "Shift", colour: "White / Green", occasion: "Casual", image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=800", desc: "Breezy handloom checks interspersed with subtle jasmine embroidery." },
+            { id: "meenakshi-rose", slug: "meenakshi-rose", name: "Meenakshi Rose", price: 6290, compareAtPrice: 7000, theme: "Heritage", sleeve: "Full", fabric: "Silk Tissue", fit: "Anarkali", colour: "Deep Red", occasion: "Wedding Guest", image: "https://images.unsplash.com/photo-1583391733958-d25e07fac044?auto=format&fit=crop&q=80&w=800", desc: "Heritage luxury featuring full sleeves and rich silk tissue in deep romantic red." },
+            { id: "lotus-lilt", slug: "lotus-lilt", name: "Lotus Lilt", price: 3490, compareAtPrice: 3990, theme: "Resort", sleeve: "Sleeveless", fabric: "Linen", fit: "Maxi", colour: "Pink / White", occasion: "Vacation", image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=800", desc: "A sleeveless resort maxi dress celebrating the graceful lotus lilt." },
+            { id: "kashish-garden", slug: "kashish-garden", name: "Kashish Garden", price: 4590, compareAtPrice: null, theme: "Minimal", sleeve: "Bishop", fabric: "Kota Doria", fit: "Wrap", colour: "Beige", occasion: "Evening", image: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?auto=format&fit=crop&q=80&w=800", desc: "Minimalist elegance with bishop sleeves in airy beige Kota Doria." },
+            { id: "indigo-iris", slug: "indigo-iris", name: "Indigo Iris", price: 3190, compareAtPrice: 3500, theme: "Heritage", sleeve: "Short", fabric: "Block Print Cotton", fit: "Pleated", colour: "Indigo", occasion: "Everyday", image: "https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?auto=format&fit=crop&q=80&w=800", desc: "Traditional block-printed indigo iris patterns with casual short sleeves." },
+            { id: "champak-tier", slug: "champak-tier", name: "Champak Tier", price: 5890, compareAtPrice: 6500, theme: "Festive", sleeve: "Balloon", fabric: "Chanderi", fit: "Tiered", colour: "Cream / Gold", occasion: "Festive night", image: "https://images.unsplash.com/photo-1617260520697-7c01289cf299?auto=format&fit=crop&q=80&w=800", desc: "Luminous cream and gold tiers offset by dramatic balloon sleeves." },
+            { id: "hibiscus-night", slug: "hibiscus-night", name: "Hibiscus Night", price: 4190, compareAtPrice: null, theme: "Occasion", sleeve: "Bell", fabric: "Georgette", fit: "Slip", colour: "Black / Floral", occasion: "Dinner", image: "https://images.unsplash.com/photo-1551489186-ccb95a1ea6a3?auto=format&fit=crop&q=80&w=800", desc: "Dark floral mystery with flowing bell sleeves on night-sky georgette." },
+            { id: "aangan-breeze", slug: "aangan-breeze", name: "Aangan Breeze", price: 2790, compareAtPrice: null, theme: "Everyday", sleeve: "Elbow", fabric: "Muslin", fit: "Straight", colour: "Mint", occasion: "Lounge", image: "https://images.unsplash.com/photo-1589310243389-96a5483213a8?auto=format&fit=crop&q=80&w=800", desc: "Cool mint muslin with elbow sleeves for breezy courtyard afternoons." }
+        ];
+
+        // 2. STATE MANAGEMENT
+        let state = {
+            cart: JSON.parse(localStorage.getItem('frockara_cart') || '[]'),
+            wishlist: JSON.parse(localStorage.getItem('frockara_wishlist') || '[]'),
+            recentViews: JSON.parse(localStorage.getItem('frockara_recent') || '[]'),
+            user: JSON.parse(localStorage.getItem('frockara_user') || 'null'),
+            sessionStart: sessionStorage.getItem('frockara_session') || Date.now()
+        };
+        
+        sessionStorage.setItem('frockara_session', state.sessionStart);
+
+        function saveState() {
+            localStorage.setItem('frockara_cart', JSON.stringify(state.cart));
+            localStorage.setItem('frockara_wishlist', JSON.stringify(state.wishlist));
+            localStorage.setItem('frockara_recent', JSON.stringify(state.recentViews));
+            updateBadges();
+        }
+
+        // 3. CORE UTILITIES
+        const formatMoney = (amount) => "₹" + amount.toLocaleString('en-IN');
+        const showToast = (msg) => {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = msg;
+            t.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            setTimeout(() => t.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none'), 3000);
+        };
+        
+        function trackEvent(name, data = {}) {
+            console.log(`[Analytics] ${name}`, data);
+            // GA4 / Clarity implementation hook
+        }
+
+        // 4. CART & WISHLIST LOGIC
+        function addToCart(id, size = 'M') {
+            const p = PRODUCTS.find(x => x.id === id);
+            if (!p) return;
+            const existing = state.cart.find(x => x.id === id && x.size === size);
+            if (existing) existing.qty++;
+            else state.cart.push({ ...p, size, qty: 1 });
+            saveState();
+            showToast('Added to garden bag');
+            trackEvent('add_to_cart', { item: id, size });
+            renderCart();
+            document.getElementById('cart-drawer').classList.remove('drawer-closed');
+            document.getElementById('cart-drawer-overlay').classList.remove('hidden');
+            setTimeout(() => { document.getElementById('cart-drawer-overlay').classList.remove('opacity-0'); }, 10);
+        }
+
+        function toggleWishlist(id, btnElement) {
+            const idx = state.wishlist.indexOf(id);
+            if (idx > -1) {
+                state.wishlist.splice(idx, 1);
+                showToast('Removed from saved');
+                trackEvent('wishlist_remove', { item: id });
+                if(btnElement) btnElement.innerHTML = '<i data-lucide="heart" class="w-5 h-5"></i>';
+            } else {
+                state.wishlist.push(id);
+                showToast('Saved to your garden');
+                trackEvent('wishlist_add', { item: id });
+                if(btnElement) btnElement.innerHTML = '<i data-lucide="heart" class="w-5 h-5 fill-rose text-rose"></i>';
+            }
+            saveState();
+            lucide.createIcons();
+            if(location.hash === '#/wishlist') router();
+        }
+
+        function updateBadges() {
+            const cb = document.getElementById('cart-badge');
+            const wb = document.getElementById('wishlist-badge');
+            
+            const cartTotal = state.cart.reduce((sum, item) => sum + item.qty, 0);
+            cb.textContent = cartTotal;
+            cb.classList.toggle('hidden', cartTotal === 0);
+            
+            wb.textContent = state.wishlist.length;
+            wb.classList.toggle('hidden', state.wishlist.length === 0);
+        }
+
+        // 5. UI CONTROLS
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => menu.classList.remove('-translate-x-full'), 10);
+            } else {
+                menu.classList.add('-translate-x-full');
+                setTimeout(() => menu.classList.add('hidden'), 300);
+            }
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+            if (drawer.classList.contains('drawer-closed')) {
+                renderCart();
+                overlay.classList.remove('hidden');
+                setTimeout(() => { overlay.classList.remove('opacity-0'); drawer.classList.remove('drawer-closed'); }, 10);
+                trackEvent('view_cart');
+            } else {
+                overlay.classList.add('opacity-0');
+                drawer.classList.add('drawer-closed');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function openSearch() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.remove('hidden');
+            document.getElementById('search-input').value = '';
+            document.getElementById('search-results').innerHTML = '';
+            setTimeout(() => { modal.classList.remove('opacity-0'); document.getElementById('search-input').focus(); }, 10);
+        }
+        function closeSearch() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function checkAccount() {
+            if(state.user) {
+                showToast(`Welcome back, ${state.user.name}`);
+            } else {
+                const modal = document.getElementById('account-modal');
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            }
+        }
+        function closeAccount() {
+            const modal = document.getElementById('account-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+        function mockLogin() {
+            state.user = { name: "Guest Explorer" };
+            localStorage.setItem('frockara_user', JSON.stringify(state.user));
+            closeAccount();
+            showToast('Account connected (Demo)');
+            trackEvent('login');
+        }
+
+        // 6. RENDER HELPERS
+        function createProductCard(p) {
+            const isWished = state.wishlist.includes(p.id);
+            const heartIcon = isWished ? '<i data-lucide="heart" class="w-5 h-5 fill-rose text-rose"></i>' : '<i data-lucide="heart" class="w-5 h-5"></i>';
+            return `
+                <div class="group relative bg-white rounded-2xl overflow-hidden card-hover border border-rose/10">
+                    <button onclick="toggleWishlist('${p.id}', this)" class="absolute top-3 right-3 z-10 p-2 bg-white/80 backdrop-blur rounded-full text-ink hover:text-rose transition shadow-sm">
+                        ${heartIcon}
+                    </button>
+                    <a href="#/product/${p.slug}" class="block overflow-hidden aspect-[3/4]">
+                        <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </a>
+                    <div class="p-5 text-center">
+                        <p class="text-xs uppercase tracking-widest text-rose font-bold mb-1">${p.theme} · ${p.sleeve}</p>
+                        <a href="#/product/${p.slug}"><h3 class="font-serif text-xl text-ink mb-2">${p.name}</h3></a>
+                        <p class="text-ink/70 font-sans font-medium">${formatMoney(p.price)}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            if (state.cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-20 text-ink/50"><i data-lucide="flower" class="w-12 h-12 mx-auto mb-4 opacity-50"></i><p>Your garden bag is empty.</p></div>`;
+                document.getElementById('cart-subtotal').textContent = '₹0';
+                lucide.createIcons();
+                return;
+            }
+            
+            let total = 0;
+            container.innerHTML = state.cart.map((item, index) => {
+                total += (item.price * item.qty);
+                return `
+                    <div class="flex gap-4 items-center">
+                        <img src="${item.image}" class="w-20 h-24 object-cover rounded-lg border border-rose/10">
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg text-ink">${item.name}</h4>
+                            <p class="text-xs text-ink/60 mb-2">Size: ${item.size} · Sleeve: ${item.sleeve}</p>
+                            <div class="flex items-center justify-between">
+                                <span class="font-medium">${formatMoney(item.price)}</span>
+                                <div class="flex items-center gap-3 border border-ink/10 rounded-full px-3 py-1">
+                                    <button onclick="updateCartQty(${index}, -1)" class="text-ink/60 hover:text-rose">-</button>
+                                    <span class="text-sm font-medium w-4 text-center">${item.qty}</span>
+                                    <button onclick="updateCartQty(${index}, 1)" class="text-ink/60 hover:text-rose">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('cart-subtotal').textContent = formatMoney(total);
+            lucide.createIcons();
+        }
+
+        function updateCartQty(index, delta) {
+            state.cart[index].qty += delta;
+            if (state.cart[index].qty <= 0) state.cart.splice(index, 1);
+            saveState();
+            renderCart();
+        }
+
+        // 7. VIEWS (Pages)
+        const Views = {
+            home: () => {
+                const featured = PRODUCTS.slice(0, 4).map(createProductCard).join('');
+                return `
+                    <div class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1623862661845-816b301f2537?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover opacity-20" alt="Botanical background">
+                        <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+                            <p class="text-rose text-sm font-bold uppercase tracking-[0.3em] mb-4">The Premium Collection</p>
+                            <h1 class="font-serif text-5xl md:text-7xl text-ink leading-tight mb-8">Every frock has a <br/><i class="text-rose">garden story.</i></h1>
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <a href="#/shop" class="btn-primary px-8 py-4 rounded-full uppercase tracking-widest text-sm font-bold w-full sm:w-auto">Shop the Edit</a>
+                                <a href="#/sleeve-studio" class="btn-outline px-8 py-4 rounded-full uppercase tracking-widest text-sm font-bold w-full sm:w-auto bg-white/50 backdrop-blur">Sleeve Studio</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <section class="max-w-7xl mx-auto px-6 py-24">
+                        <div class="flex justify-between items-end mb-12">
+                            <div>
+                                <h2 class="font-serif text-4xl text-ink">New Arrivals</h2>
+                                <p class="text-ink/60 mt-2">Just blossomed in our studio.</p>
+                            </div>
+                            <a href="#/shop" class="hidden md:flex items-center gap-2 text-rose hover:text-ink transition uppercase tracking-widest text-xs font-bold">View All <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            ${featured}
+                        </div>
+                    </section>
+                    
+                    <section class="bg-rose/5 py-24">
+                        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                            <div class="order-2 md:order-1">
+                                <h2 class="font-serif text-4xl text-ink mb-6">Discover by Sleeve</h2>
+                                <p class="text-ink/70 leading-relaxed mb-8 text-lg">We believe the silhouette begins with the sleeve. Whether it's a dramatic puff, a romantic ruffle, or a clean sleeveless cut, find the expression that matches your mood.</p>
+                                <a href="#/sleeve-studio" class="inline-flex items-center gap-2 text-rose border-b border-rose pb-1 hover:text-ink hover:border-ink transition">Explore Sleeve Studio <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            </div>
+                            <div class="order-1 md:order-2 grid grid-cols-2 gap-4">
+                                <img src="${PRODUCTS[0].image}" class="rounded-2xl rounded-tr-[100px] shadow-lg w-full h-64 object-cover" alt="Puff Sleeve">
+                                <img src="${PRODUCTS[1].image}" class="rounded-2xl rounded-bl-[100px] shadow-lg w-full h-64 object-cover mt-8" alt="Ruffle Sleeve">
+                            </div>
+                        </div>
+                    </section>
+                `;
+            },
+            
+            shop: () => {
+                const grid = PRODUCTS.map(createProductCard).join('');
+                return `
+                    <div class="bg-white border-b border-rose/10 py-12">
+                        <div class="max-w-7xl mx-auto px-6 text-center">
+                            <h1 class="font-serif text-4xl md:text-5xl text-ink mb-4">The Garden Edit</h1>
+                            <p class="text-ink/60 max-w-lg mx-auto">Explore our complete collection of handcrafted Indian frocks.</p>
+                        </div>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-8">
+                        <!-- Filters (Desktop) -->
+                        <div class="hidden md:block w-64 shrink-0 pr-8 border-r border-rose/10 space-y-8">
+                            <div>
+                                <h3 class="font-serif text-xl mb-4 text-ink">Themes</h3>
+                                <ul class="space-y-3 text-ink/70 text-sm">
+                                    <li><a href="javascript:void(0)" class="hover:text-rose">Floral (4)</a></li>
+                                    <li><a href="javascript:void(0)" class="hover:text-rose">Festive (3)</a></li>
+                                    <li><a href="javascript:void(0)" class="hover:text-rose">Heritage (2)</a></li>
+                                    <li><a href="javascript:void(0)" class="hover:text-rose">Everyday (3)</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-xl mb-4 text-ink">Sleeves</h3>
+                                <ul class="space-y-3 text-ink/70 text-sm">
+                                    <li><a href="javascript:void(0)" class="hover:text-rose">Puff (1)</a></li>
+                                    <li><a href="javascript:void(0)" class="hover:text-rose">Bell (2)</a></li>
+                                    <li><a href="javascript:void(0)" class="hover:text-rose">Full (1)</a></li>
+                                    <li><a href="javascript:void(0)" class="hover:text-rose">Sleeveless (1)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Grid -->
+                        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${grid}
+                        </div>
+                    </div>
+                `;
+            },
+            
+            product: (slug) => {
+                const p = PRODUCTS.find(x => x.slug === slug);
+                if(!p) return `<div class="py-32 text-center font-serif text-2xl">Frock not found in the garden. <br><a href="#/shop" class="text-rose text-sm font-sans mt-4 inline-block">Return to Shop</a></div>`;
+                
+                // Analytics & Memory
+                trackEvent('view_item', { item: p.id, name: p.name });
+                if(!state.recentViews.includes(p.id)) {
+                    state.recentViews.unshift(p.id);
+                    if(state.recentViews.length > 4) state.recentViews.pop();
+                    saveState();
+                }
+
+                const related = PRODUCTS.filter(x => x.theme === p.theme && x.id !== p.id).slice(0, 4);
+                const relatedHTML = related.length ? `
+                    <section class="max-w-7xl mx-auto px-6 py-24 border-t border-rose/10 mt-16">
+                        <h2 class="font-serif text-3xl text-ink mb-10 text-center">More from the ${p.theme} Theme</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            ${related.map(createProductCard).join('')}
+                        </div>
+                    </section>` : '';
+
+                return `
+                    <div class="max-w-7xl mx-auto px-6 py-12">
+                        <!-- Breadcrumb -->
+                        <div class="text-xs uppercase tracking-widest text-ink/50 mb-8">
+                            <a href="#/" class="hover:text-rose">Home</a> <span class="mx-2">/</span>
+                            <a href="#/shop" class="hover:text-rose">Shop</a> <span class="mx-2">/</span>
+                            <span class="text-ink">${p.name}</span>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row gap-12 lg:gap-20">
+                            <!-- Image -->
+                            <div class="w-full md:w-1/2">
+                                <div class="bg-white rounded-3xl overflow-hidden border border-rose/10 shadow-sm relative">
+                                    <button onclick="toggleWishlist('${p.id}', this)" class="absolute top-4 right-4 z-10 p-3 bg-white/80 backdrop-blur rounded-full text-ink hover:text-rose transition shadow">
+                                        ${state.wishlist.includes(p.id) ? '<i data-lucide="heart" class="w-6 h-6 fill-rose text-rose"></i>' : '<i data-lucide="heart" class="w-6 h-6"></i>'}
+                                    </button>
+                                    <img src="${p.image}" class="w-full h-auto object-cover aspect-[3/4]" alt="${p.name}">
+                                </div>
+                            </div>
+                            
+                            <!-- Info -->
+                            <div class="w-full md:w-1/2 py-4">
+                                <p class="text-rose text-sm font-bold uppercase tracking-widest mb-3">${p.theme} · ${p.sleeve} Sleeve</p>
+                                <h1 class="font-serif text-4xl lg:text-5xl text-ink mb-4">${p.name}</h1>
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="text-2xl font-medium text-ink">${formatMoney(p.price)}</span>
+                                    ${p.compareAtPrice ? `<span class="text-lg text-ink/40 line-through">${formatMoney(p.compareAtPrice)}</span>` : ''}
+                                </div>
+                                
+                                <p class="text-ink/80 text-lg leading-relaxed mb-8">${p.desc}</p>
+                                
+                                <div class="grid grid-cols-2 gap-y-4 gap-x-8 text-sm text-ink/70 mb-10 py-6 border-y border-rose/10">
+                                    <div><span class="font-bold uppercase tracking-wider text-xs block mb-1">Fabric</span> ${p.fabric}</div>
+                                    <div><span class="font-bold uppercase tracking-wider text-xs block mb-1">Colour</span> ${p.colour}</div>
+                                    <div><span class="font-bold uppercase tracking-wider text-xs block mb-1">Fit</span> ${p.fit}</div>
+                                    <div><span class="font-bold uppercase tracking-wider text-xs block mb-1">Occasion</span> ${p.occasion}</div>
+                                </div>
+                                
+                                <div class="mb-8">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <span class="font-bold uppercase tracking-wider text-sm text-ink">Select Size</span>
+                                        <button class="text-xs text-rose underline underline-offset-4">Size Guide</button>
+                                    </div>
+                                    <div class="flex gap-3" id="size-selector">
+                                        ${['XS', 'S', 'M', 'L', 'XL'].map(s => `
+                                            <button onclick="selectSize(this)" class="size-btn w-12 h-12 rounded-full border-2 border-ink/20 flex items-center justify-center font-medium hover:border-rose transition ${s==='M'?'border-rose bg-rose/5 text-rose selected':''}">${s}</button>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                                
+                                <button onclick="addCurrentToCart('${p.id}')" class="w-full btn-primary py-5 rounded-full uppercase tracking-widest text-sm font-bold shadow-lg shadow-rose/20 hover:-translate-y-1 transition-transform">
+                                    Add to Garden Bag
+                                </button>
+                                
+                                <div class="mt-8 flex items-start gap-4 p-5 bg-rose/5 rounded-2xl">
+                                    <i data-lucide="message-circle" class="w-6 h-6 text-rose shrink-0 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-serif text-lg text-ink mb-1">Order directly via WhatsApp</h4>
+                                        <p class="text-sm text-ink/70">Prefer a personal touch? Add to bag and securely place your order through our dedicated WhatsApp concierge.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    ${relatedHTML}
+                `;
+            },
+            
+            sleeveStudio: () => {
+                const sleeves = [...new Set(PRODUCTS.map(p => p.sleeve))];
+                return `
+                    <div class="bg-ivory py-16 text-center border-b border-rose/10">
+                        <h1 class="font-serif text-5xl text-ink mb-4">Sleeve Studio</h1>
+                        <p class="text-ink/60 max-w-xl mx-auto text-lg">The silhouette begins here. Discover our distinct sleeve architectures, designed to frame your mood and occasion.</p>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                        ${sleeves.map(sleeve => {
+                            const sample = PRODUCTS.find(p => p.sleeve === sleeve);
+                            return `
+                                <div class="group cursor-pointer" onclick="openSearch(); setTimeout(()=> { document.getElementById('search-input').value='${sleeve}'; handleSearch(); }, 100)">
+                                    <div class="bg-white rounded-t-full rounded-b-2xl overflow-hidden border border-rose/10 shadow-sm aspect-[4/5] relative card-hover">
+                                        <img src="${sample.image}" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-700 group-hover:scale-105">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent"></div>
+                                        <div class="absolute bottom-8 left-0 w-full text-center text-white">
+                                            <h3 class="font-serif text-3xl mb-2">${sleeve} Sleeve</h3>
+                                            <span class="text-xs uppercase tracking-widest font-bold">Shop this style</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            },
+            
+            concierge: () => {
+                return `
+                    <div class="max-w-3xl mx-auto px-6 py-20 text-center">
+                        <i data-lucide="sparkles" class="w-12 h-12 text-rose mx-auto mb-6"></i>
+                        <h1 class="font-serif text-4xl md:text-5xl text-ink mb-4">Style Concierge</h1>
+                        <p class="text-ink/60 text-lg mb-12">Tell us where you're going, and we'll curate the perfect three-piece edit for your garden story.</p>
+                        
+                        <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-rose/10 text-left relative overflow-hidden">
+                            <div class="absolute -right-20 -top-20 opacity-5 pointer-events-none"><i data-lucide="flower" class="w-64 h-64"></i></div>
+                            <h3 class="font-serif text-2xl text-ink mb-6 relative z-10">What is the occasion?</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10 relative z-10">
+                                ${['Brunch', 'Festive', 'Wedding Guest', 'Vacation', 'Everyday', 'Dinner Date'].map(occ => `
+                                    <button onclick="runConcierge('${occ}')" class="p-4 border-2 border-rose/10 rounded-xl hover:border-rose hover:bg-rose/5 transition text-sm font-bold uppercase tracking-wider text-ink text-center">${occ}</button>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div id="concierge-results" class="mt-16 hidden animate-[fadeIn_0.5s_ease-out]">
+                            <h2 class="font-serif text-3xl text-ink mb-2">Your Curated Edit</h2>
+                            <p class="text-ink/60 mb-8" id="concierge-subtitle"></p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6" id="concierge-grid"></div>
+                        </div>
+                    </div>
+                `;
+            },
+            
+            wishlist: () => {
+                const items = state.wishlist.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+                const grid = items.length ? items.map(createProductCard).join('') : `
+                    <div class="col-span-full py-32 text-center text-ink/50">
+                        <i data-lucide="heart" class="w-16 h-16 mx-auto mb-6 opacity-20"></i>
+                        <h2 class="font-serif text-2xl text-ink mb-4">Your garden is empty.</h2>
+                        <a href="#/shop" class="btn-primary inline-block px-8 py-3 rounded-full uppercase tracking-widest text-xs font-bold">Explore Frocks</a>
+                    </div>
+                `;
+                return `
+                    <div class="max-w-7xl mx-auto px-6 py-16">
+                        <h1 class="font-serif text-4xl md:text-5xl text-ink mb-2 text-center">Saved Garden</h1>
+                        <p class="text-ink/60 text-center mb-12">Your personal collection of favorite frocks.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            ${grid}
+                        </div>
+                    </div>
+                `;
+            },
+            
+            themes: () => {
+                return `
+                    <div class="max-w-7xl mx-auto px-6 py-16 text-center">
+                        <h1 class="font-serif text-4xl md:text-5xl text-ink mb-4">Themes & Moods</h1>
+                        <p class="text-ink/60 mb-16 max-w-xl mx-auto text-lg">Browse collections inspired by Indian heritage, botanical rhythms, and everyday romance.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                            ${['Floral', 'Heritage', 'Festive', 'Resort'].map((theme, i) => {
+                                const prod = PRODUCTS.find(p => p.theme === theme) || PRODUCTS[i];
+                                return `
+                                <div class="group relative rounded-3xl overflow-hidden aspect-[16/9] cursor-pointer" onclick="openSearch(); setTimeout(()=> { document.getElementById('search-input').value='${theme}'; handleSearch(); }, 100)">
+                                    <img src="${prod.image}" class="absolute inset-0 w-full h-full object-cover transition duration-1000 group-hover:scale-110">
+                                    <div class="absolute inset-0 bg-ink/40 group-hover:bg-ink/30 transition"></div>
+                                    <div class="absolute inset-0 p-10 flex flex-col justify-end text-white">
+                                        <h2 class="font-serif text-4xl mb-2">${theme}</h2>
+                                        <p class="text-sm uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-500">Explore Collection <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i></p>
+                                    </div>
+                                </div>
+                            `}).join('')}
+                        </div>
+                    </div>
+                `;
+            },
+            
+            journal: () => `<div class="py-32 text-center font-serif text-3xl text-ink"><i data-lucide="book-open" class="w-16 h-16 mx-auto mb-6 text-rose"></i>The Botanical Journal<br><span class="text-lg font-sans text-ink/50 mt-4 block">Coming soon to FROCKARA.</span></div>`
+        };
+
+        // 8. INTERACTIVITY HELPERS
+        window.selectSize = function(btn) {
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.classList.remove('border-rose', 'bg-rose/5', 'text-rose', 'selected');
+            });
+            btn.classList.add('border-rose', 'bg-rose/5', 'text-rose', 'selected');
+        }
+
+        window.addCurrentToCart = function(id) {
+            const selectedBtn = document.querySelector('.size-btn.selected');
+            const size = selectedBtn ? selectedBtn.innerText : 'M';
+            addToCart(id, size);
+        }
+
+        window.handleSearch = function() {
+            const q = document.getElementById('search-input').value.toLowerCase();
+            const resultsDiv = document.getElementById('search-results');
+            if(!q) { resultsDiv.innerHTML = ''; return; }
+            
+            const results = PRODUCTS.filter(p => 
+                p.name.toLowerCase().includes(q) || 
+                p.theme.toLowerCase().includes(q) || 
+                p.sleeve.toLowerCase().includes(q) || 
+                p.colour.toLowerCase().includes(q) ||
+                p.occasion.toLowerCase().includes(q)
+            ).slice(0, 5);
+            
+            if(results.length === 0) {
+                resultsDiv.innerHTML = `<div class="text-center py-10 text-ink/50 font-serif text-lg">No frocks found matching "${q}".</div>`;
+                return;
+            }
+            
+            resultsDiv.innerHTML = results.map(p => `
+                <a href="#/product/${p.slug}" onclick="closeSearch()" class="flex items-center gap-4 p-4 hover:bg-rose/5 rounded-2xl transition border border-transparent hover:border-rose/10">
+                    <img src="${p.image}" class="w-16 h-20 object-cover rounded-lg">
+                    <div>
+                        <h4 class="font-serif text-xl text-ink">${p.name}</h4>
+                        <p class="text-xs text-ink/60 uppercase tracking-widest mt-1">${p.theme} · ${p.sleeve}</p>
+                        <p class="text-sm font-medium mt-1 text-rose">${formatMoney(p.price)}</p>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        window.runConcierge = function(occasion) {
+            const res = document.getElementById('concierge-results');
+            const subtitle = document.getElementById('concierge-subtitle');
+            const grid = document.getElementById('concierge-grid');
+            
+            trackEvent('style_concierge_complete', { occasion });
+            
+            // Deterministic fake matching for demo
+            const matches = [...PRODUCTS].sort(() => 0.5 - Math.random()).slice(0, 3);
+            
+            subtitle.innerText = `Perfectly suited for ${occasion}.`;
+            grid.innerHTML = matches.map(createProductCard).join('');
+            res.classList.remove('hidden');
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // 9. WHATSAPP & ORDER GENERATION (Crucial System)
+        window.processCheckout = function() {
+            if(state.cart.length === 0) return;
+            trackEvent('begin_checkout');
+            
+            const orderId = `FRK-${Math.floor(Math.random() * 90000000) + 10000000}`;
+            let cartTotal = 0;
+            
+            let message = `Hello FROCKARA 👋\n\nOrder Request:\nOrder ID: ${orderId}\n\nProducts:\n`;
+            
+            state.cart.forEach(item => {
+                message += `• ${item.name} • Sleeve: ${item.sleeve} • Size: ${item.size} • Qty: ${item.qty} • Price: ${formatMoney(item.price)}\n`;
+                cartTotal += (item.price * item.qty);
+            });
+            
+            message += `\nTotal: ${formatMoney(cartTotal)}\nPayment contact: 8317581308\n\nPlease confirm availability and payment instructions.`;
+            
+            // Generate Order Document before WhatsApp redirect
+            generateOrderHTML(orderId, state.cart, cartTotal);
+            
+            const encoded = encodeURIComponent(message);
+            const waUrl = `https://wa.me/918317581308?text=${encoded}`;
+            
+            trackEvent('whatsapp_order', { orderId, value: cartTotal });
+            window.open(waUrl, '_blank');
+            
+            // Clear cart conceptually for demo
+            state.cart = [];
+            saveState();
+            toggleCart();
+            showToast('Order request prepared!');
+        }
+        
+        function generateOrderHTML(orderId, cartItems, total) {
+            const html = `<!DOCTYPE html><html><head><title>FROCKARA Order ${orderId}</title><style>body{font-family:sans-serif;color:#333;max-width:600px;margin:40px auto;padding:20px;border:1px solid #ddd;}h1{color:#8B3A4C;}table{width:100%;border-collapse:collapse;margin-top:20px;}th,td{padding:10px;border-bottom:1px solid #eee;text-align:left;}th{background:#f9f9f9;}</style></head><body><h1>FROCKARA Order Summary</h1><p><strong>Order ID:</strong> ${orderId}</p><p><strong>Date:</strong> ${new Date().toLocaleString()}</p><table><thead><tr><th>Product</th><th>Size</th><th>Qty</th><th>Price</th></tr></thead><tbody>${cartItems.map(i => `<tr><td>${i.name} (${i.theme}/${i.sleeve})</td><td>${i.size}</td><td>${i.qty}</td><td>${formatMoney(i.price)}</td></tr>`).join('')}</tbody></table><h3 style="text-align:right;margin-top:20px;">Total: ${formatMoney(total)}</h3><p style="margin-top:40px;font-size:0.9em;color:#666;">Payment Contact: 8317581308<br>WhatsApp Support: +91 83175 81308</p></body></html>`;
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${orderId}-order-summary.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // 10. SPA ROUTER
+        function router() {
+            let path = window.location.hash.replace('#/', '') || '';
+            const app = document.getElementById('app');
+            
+            window.scrollTo(0, 0);
+            document.getElementById('mobile-menu').classList.add('hidden'); // ensure mobile menu closes
+            
+            if (path === '') {
+                app.innerHTML = Views.home();
+            } else if (path === 'shop') {
+                app.innerHTML = Views.shop();
+            } else if (path.startsWith('product/')) {
+                app.innerHTML = Views.product(path.replace('product/', ''));
+            } else if (path === 'sleeve-studio') {
+                app.innerHTML = Views.sleeveStudio();
+            } else if (path === 'concierge') {
+                app.innerHTML = Views.concierge();
+            } else if (path === 'wishlist') {
+                app.innerHTML = Views.wishlist();
+            } else if (path === 'themes') {
+                app.innerHTML = Views.themes();
+            } else if (path === 'journal') {
+                app.innerHTML = Views.journal();
+            } else {
+                app.innerHTML = `<div class="py-32 text-center font-serif text-3xl">Page not found.<br><a href="#/" class="text-rose text-sm font-sans mt-4 inline-block">Return Home</a></div>`;
+            }
+            
+            lucide.createIcons();
+        }
+
+        // 11. INITIALIZATION
+        window.addEventListener('hashchange', router);
+        window.addEventListener('DOMContentLoaded', () => {
+            router();
+            updateBadges();
+            
+            // Session tracking
+            if(!sessionStorage.getItem('frockara_welcomed')) {
+                setTimeout(() => {
+                    if(!state.user) checkAccount();
+                    sessionStorage.setItem('frockara_welcomed', 'true');
+                }, 5000); // Show account prompt after 5 seconds on first visit
+            }
+        });
+    </script>
+</body>
+</html>

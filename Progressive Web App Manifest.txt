@@ -1,0 +1,16 @@
+{
+  "name": "FROCKARA — Indian Frocks in Full Bloom",
+  "short_name": "FROCKARA",
+  "start_url": "/Frokara/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#FDFBF7",
+  "description": "Floral premium Indian frocks. Discover by sleeve, theme, fabric and occasion.",
+  "icons": [
+    {
+      "src": "https://www.thetaram.com/cdn/shop/files/IMG_9716.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
